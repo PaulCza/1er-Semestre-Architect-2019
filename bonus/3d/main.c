@@ -1,0 +1,43 @@
+/*
+** EPITECH PROJECT, 2019
+** main.c
+** File description:
+** afdaz
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "my.h"
+#include <math.h>
+int main(int argc, char *argv[])
+{
+    double c, d, e;
+    vec og;
+    if (argc == 2 && argv[1][1] == 'h'){
+        helper();
+        exit(1);
+    }
+    if (argc < 4)
+        exit (84);
+    check_number(argv[1]);
+    check_number(argv[2]);
+    check_number(argv[3]);
+    og.x = atof(argv[1]);
+    og.y = atof(argv[2]);
+    og.z = atof(argv[3]);
+    switch (argv[4][1]){
+    case 't':
+        start_translation(argv[5], argv[6], argv[7], og);
+        break;
+    case 'z':
+        start_scaling(argv[5], argv[6], argv[7], og);
+        break;
+    case 'r':
+        start_rotation(argv[5], og);
+        break;
+    case 's':
+        start_reflection(argv[5], og);
+        break;
+    }
+    return 0;
+}
